@@ -102,7 +102,7 @@ Role: {role}
 Field: {field}
 
 Context:
-I am a chemical engineering student at the faculty of hydrocarbons and chemistry.
+I am a petroleum engineering student at the faculty of hydrocarbons and chemistry.
 
 Goal:
 {goal_text}
