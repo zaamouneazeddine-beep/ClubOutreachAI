@@ -9,7 +9,6 @@ st.set_page_config(
     layout="centered"
 )
 
-# ===== CSS بسيط لتحسين الشكل =====
 st.markdown("""
 <style>
 .main {
@@ -40,8 +39,6 @@ message_type = st.sidebar.selectbox(
 name = st.sidebar.text_input("Name")
 role = st.sidebar.text_input("Role / Position")
 field = st.sidebar.text_input("Field of Expertise")
-
-# ===== Main Content =====
 st.title("AIChE Outreach AI")
 st.write(
     "Generate **human-like LinkedIn messages** for workshops, visits, or sponsorships."
@@ -100,3 +97,4 @@ Mention their field naturally.
             height=220
 
         )
+
