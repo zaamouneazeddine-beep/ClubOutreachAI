@@ -28,7 +28,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ===== Sidebar =====
 st.sidebar.title("Message Settings")
 
 message_type = st.sidebar.selectbox(
@@ -97,4 +96,5 @@ Mention their field naturally.
             height=220
 
         )
+
 
