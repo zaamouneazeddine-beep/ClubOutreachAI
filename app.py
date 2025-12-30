@@ -1,8 +1,10 @@
+
 import streamlit as st
 import os
 from openai import OpenAI
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
 st.set_page_config(
     page_title="Club Outreach AI",
     page_icon="AIChE.png",
@@ -30,14 +32,29 @@ st.markdown("""
 
 st.sidebar.title("Message Settings")
 
+
 message_type = st.sidebar.selectbox(
     "Message Type",
     ("Workshop Invitation", "Field Visit", "Sponsorship Opportunity")
 )
 
-name = st.sidebar.text_input("Name")
-role = st.sidebar.text_input("Role / Position")
-field = st.sidebar.text_input("Field of Expertise")
+
+sender_role = st.sidebar.selectbox(
+    "Your Role in AIChE",
+    (
+        "Treasurer of AIChE",
+        "President of AIChE",
+        "Vice President of AIChE",
+        "General Secretary of AIChE",
+        "Human Resources of AIChE",
+        "Coordinator of AIChE"
+    )
+)
+
+name = st.sidebar.text_input("Recipient Name")
+role = st.sidebar.text_input("Recipient Role / Position")
+field = st.sidebar.text_input("Recipient Field of Expertise")
+
 st.title("AIChE Outreach AI")
 st.write(
     "Generate **human-like LinkedIn messages** for workshops, visits, or sponsorships."
@@ -69,13 +86,23 @@ Rules:
 - Do not sound like a template
 - Do NOT mention AI
 
-Person details:
+Sender role:
+I am the {sender_role} of the AIChE student chapter.
+
+Adjust the tone naturally based on my role.
+- President / Vice President: confident and representative
+- Treasurer: professional and finance-aware
+- General Secretary: formal and organized
+- Human Resources: people-focused and friendly
+- Coordinator: collaborative and initiative-driven
+
+Recipient details:
 Name: {name}
 Role: {role}
 Field: {field}
 
 Context:
-I am a chemical engineering student at faculty of hydrocarbons and chemistry and AIChE student chapter coordinator.
+I am a chemical engineering student at the faculty of hydrocarbons and chemistry.
 
 Goal:
 {goal_text}
@@ -94,7 +121,4 @@ Mention their field naturally.
             "Copy and paste this message into LinkedIn:",
             response.choices[0].message.content,
             height=220
-
         )
-
-
