@@ -1,9 +1,8 @@
 import streamlit as st
+import os
 from openai import OpenAI
 
-# ضع API Key هنا
-client = OpenAI(api_key="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")
-
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 st.set_page_config(
     page_title="Club Outreach AI",
     page_icon="AIChE.png",
@@ -99,4 +98,5 @@ Mention their field naturally.
             "Copy and paste this message into LinkedIn:",
             response.choices[0].message.content,
             height=220
+
         )
